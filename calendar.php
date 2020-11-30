@@ -3,6 +3,8 @@ include "calendarFunction.php";
 if (isset($_GET['annee'])&& !empty($_GET['annee'])){
     $annee = intval($_GET['annee']);
 }
+$anneeSuivante = $annee +1;
+$anneePrecedente = $annee -1;
 $html = <<<HTML
 <!doctype html>
 <html lang="en">
@@ -14,26 +16,43 @@ $html = <<<HTML
     </head>
 
     <body>
+        <h1> CALENDRIER $annee</h1>
+        
+        
     <div class="container">
-        <div class="row">
-            
+    
 HTML;
-                for ($i = 1; $i<=6; $i++){
-                    $html .= "<div class='col-2'>";
-                    $html.=calendar($i, $annee, True);
-                    $html .= "</div>";
-                }
-$html .= <<<HTML
+    for($i=0; $i<3;$i++){
+        $html .= '<div class="row">';
+        if($i==0){
+            $html .=<<<HTML
+            <div class='col-2' style="text-align : center">
+            <a href="calendar.php?annee=$anneePrecedente"><img width="50px" src="icone.png" style="transform:scaleX(-1);"><a>
             </div>
-            <div class="row">
 HTML;
-                for ($i = 7; $i<=12; $i++){
-                    $html .= "<div class='col-2'>";
-                    $html.=calendar($i, $annee, True);
-                    $html .= "</div>";
-                }
-$html .= <<<HTML
+        }
+        else{
+            $html .= "<div class='col-2'></div>";
+        }
+        for ($j = 1; $j<=4; $j++){
+            $html .= "<div class='col-2'>";
+            $html.=calendar($j+$i*4, $annee, False);
+            $html .= "</div>";
+        }
+        if($i==0){
+            $html .=<<<HTML
+             <div class='col-2' style="text-align : center">
+            <a  class="align-middle" href="calendar.php?annee=$anneeSuivante"><img width="50px" src="icone.png"><a>
             </div>
+HTML;
+        }
+        else{
+            $html .= "<div class='col-2'></div>";
+        }
+
+        $html .= '</div>';
+    }
+    $html .= <<<HTML
     </div>
 </body>
 </html>
