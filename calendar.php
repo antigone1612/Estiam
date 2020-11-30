@@ -16,7 +16,7 @@ $html = <<<HTML
     </head>
 
     <body>
-        <h1> CALENDRIER $annee</h1>
+        <h1 style="text-align : center"> CALENDRIER $annee</h1>
         
         
     <div class="container">
