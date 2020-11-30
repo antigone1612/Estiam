@@ -1,5 +1,8 @@
 <?php
 include "calendarFunction.php";
+if (isset($_GET['annee'])&& !empty($_GET['annee'])){
+    $annee = intval($_GET['annee']);
+}
 $html = <<<HTML
 <!doctype html>
 <html lang="en">
@@ -17,7 +20,7 @@ $html = <<<HTML
 HTML;
                 for ($i = 1; $i<=6; $i++){
                     $html .= "<div class='col-2'>";
-                    $html.=calendar($i, 2020, True);
+                    $html.=calendar($i, $annee, True);
                     $html .= "</div>";
                 }
 $html .= <<<HTML
@@ -26,7 +29,7 @@ $html .= <<<HTML
 HTML;
                 for ($i = 7; $i<=12; $i++){
                     $html .= "<div class='col-2'>";
-                    $html.=calendar($i, 2020, True);
+                    $html.=calendar($i, $annee, True);
                     $html .= "</div>";
                 }
 $html .= <<<HTML
