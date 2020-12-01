@@ -1,5 +1,6 @@
 <?php
 include "calendarFunction.php";
+include "isPublicHoliday.php";
 if (isset($_GET['annee'])&& !empty($_GET['annee'])){
     $annee = intval($_GET['annee']);
 }
@@ -18,10 +19,12 @@ $html = <<<HTML
     <body>
         <h1 style="text-align : center"> CALENDRIER $annee</h1>
         
-        
     <div class="container">
     
 HTML;
+    $jour = date("d");
+    $mois = date("m");
+    $html.= isPublicHoliday($jour,$mois);
     for($i=0; $i<3;$i++){
         $html .= '<div class="row">';
         if($i==0){

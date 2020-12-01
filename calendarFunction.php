@@ -27,7 +27,7 @@ function calendar(int $month, int $year, bool $showYear) {
     $html = <<<HTML
             <table>
                 <tr>
-                    <th colspan="7">$nom_mois</th>
+                   <th colspan="7">$nom_mois</th>
                 </tr>
                 <tr>
 HTML;
@@ -52,13 +52,23 @@ HTML;
                 $html .= "<td></td>";
             }
             if ($jour_semaine == 6 || $jour_semaine == 7){
-                $html .= "<td class='weekEnd'>$jour</td>";
+                if (isPublicHoliday($jour, date("n",$date), date("y",$date)) == "Jour Férié !"){
+                    $html .= "<td style = 'color : red' class='weekEnd'>$jour</td>";
+                } else {
+                    $html .= "<td class='weekEnd'>$jour</td>";
+                }
             }
             else{
-            $html .= "<td>$jour</td>";
+                if (isPublicHoliday($jour, date("n",$date), date("y",$date)) == "Jour Férié !"){
+                    $html .= "<td style = 'color : red'>$jour</td>";
+                } else {
+                    $html .= "<td>$jour</td>";
+                }
             }
+
             $jour++;
             $jour_semaine++;
+
         }
         if ($jour > $nombre_jours_mois){
             while ($jour_semaine <= 7){
