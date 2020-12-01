@@ -13,5 +13,8 @@ td {
     padding-right: 3px !important;
 }
 .weekEnd{
-    background-color: #FF33A4;
+    background-color: #CDEFA3;
 }
+table:nth-of-type(even) th {
+    background-color: #1a031b;
+ }
