@@ -14,7 +14,7 @@ $body .= <<<HTML
     </form>
     
 HTML;
-$page = new WebPage("Calandrier");
+$page = new WebPageWithBootstrap("Calandrier");
 $page->appendCss("th,td{
     width: 25px;
     border-left: 1px solid black;

@@ -1,11 +1,10 @@
 <?php 
 class WebPage {
-    private  $head = "";
-    private  $title;
-    private  $body = "";
-    private $langue = 'fr';
+    protected $head = "";
+    protected  $title;
+    protected  $body = "";
+    protected $langue = 'fr';
     
-  
     //constructeur
     function __construct($title) {
         $this->title = $title;
@@ -16,7 +15,6 @@ class WebPage {
     public function addDescription($description){
         $this->appendToHead("<meta name='Description' content='$description'/>");
     }
-
 
     public function setLangue($langue)
     {
@@ -31,13 +29,13 @@ class WebPage {
         $this->appendToHead("<style>$css</style>");
     }
     public function appendJs($js){
-        $this->appendToHead("<script>$js</script>");
+        $this->appendContent("<script>$js</script>");
     }
     public function appendToHead($str){
         $this->head .= $str;
     }
     public function appendJsUrl($js){
-        $this->appendToHead("<script type='text/javascript' src=".$js."></script>");
+        $this->appendContent("<script type='text/javascript' src=".$js."></script>");
     }
     public function appendCssUrl($css){
         $this->appendToHead("<link rel='stylesheet' media='screen' href=".$css.">");

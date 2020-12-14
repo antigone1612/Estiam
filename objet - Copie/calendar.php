@@ -1,5 +1,5 @@
 <?php
-include "Webpage.php";
+include "WebPageWithBootstrap.php";
 include "calendarFunction.php";
 if (isset($_GET['annee'])&& !empty($_GET['annee'])){
     $annee = intval($_GET['annee']);
@@ -47,7 +47,7 @@ HTML;
     </div>
 HTML;
 
-$page2 = new WebPage("Calandrier");
+$page2 = new WebPageWithBootstrap("Calandrier");
 $page2->addKeyWord('testeur');
 $page2->addAuthor("Antigone");
 $page2->addDescription("Page qui affiche le calandrier de l'année");
