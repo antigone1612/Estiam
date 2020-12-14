@@ -1,12 +1,30 @@
 <?php 
 class WebPage {
-    private  $header = "";
+    private  $head = "";
     private  $title;
     private  $body = "";
+    private $langue = 'fr';
+    
   
     //constructeur
     function __construct($title) {
         $this->title = $title;
+    }
+    public function addKeyWord($meta){
+        $this->appendToHead("<meta name='keywords' content='$meta'/>");
+    }
+    public function addDescription($description){
+        $this->appendToHead("<meta name='Description' content='$description'/>");
+    }
+
+
+    public function setLangue($langue)
+    {
+        $this->langue = $langue;
+    }
+    
+    public function addAuthor($auteur){
+        $this->appendToHead("<meta name='author' content='$auteur' />");
     }
 
     public function appendCss($css){
@@ -16,7 +34,7 @@ class WebPage {
         $this->appendToHead("<script>$js</script>");
     }
     public function appendToHead($str){
-        $this->header .= $str;
+        $this->head .= $str;
     }
     public function appendJsUrl($js){
         $this->appendToHead("<script type='text/javascript' src=".$js."></script>");
@@ -31,7 +49,7 @@ class WebPage {
     public function buildPage(){
         return <<<HTML
             <!doctype html>
-            <html lang="en">
+            <html lang="$this->langue">
                 <head>
                     <meta charset="utf-8">
                     <title>$this->title</title>
@@ -41,8 +59,22 @@ class WebPage {
                     {$this->body}
                 </body>
             </html>
-        HTML;
+HTML;
     }
+
+    /**
+     * Set the value of body
+     *
+     * @return  self
+     */ 
+    public function setBody($body)
+    {
+        $this->body = $body;
+
+        return $this;
+    }
+
+ 
 }
 
 ?>
