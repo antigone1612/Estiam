@@ -1,7 +1,5 @@
-<?php
-include "Webpage.php";
-
-$body = <<<HTML
+<?php 
+$body .= <<<HTML
   <hr>
     <form action="calendar" id="formulaire" method="GET">
         <fieldset>
@@ -16,8 +14,7 @@ $body = <<<HTML
     </form>
     
 HTML;
-
-$page = new WebPage("Calandrier");
+$page = new WebPageWithBootstrap("Calandrier");
 $page->appendCss("th,td{
     width: 25px;
     border-left: 1px solid black;
@@ -38,5 +35,3 @@ td {
 $page->appendContent($body);
 echo $page->buildPage();
 
-
-?>
