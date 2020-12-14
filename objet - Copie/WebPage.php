@@ -29,14 +29,19 @@ class WebPage {
     }
 
     public function buildPage(){
-       return
-        '<!doctype html>
-        <html lang="fr">
-            <head>
-                <meta charset="utf-8">
-                <title>'.$this->title.'</title>'.$this->header.'
-            </head>
-            <body>'.$this->body.'</body></html>';
+        return <<<HTML
+            <!doctype html>
+            <html lang="en">
+                <head>
+                    <meta charset="utf-8">
+                    <title>$this->title</title>
+                    {$this->head}
+                </head>
+                <body>
+                    {$this->body}
+                </body>
+            </html>
+        HTML;
     }
 }
 
