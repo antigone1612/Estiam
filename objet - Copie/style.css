@@ -1,3 +1,25 @@
+<<<<<<< HEAD
+th,td{
+    width: 25px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    
+}
+th{
+    background-color: rgb(192, 188, 188);
+    text-align: center !important;
+}
+td {
+    text-align: right !important;
+    padding-right: 3px !important;
+}
+.weekEnd{
+    background-color: #CDEFA3;
+}
+table:nth-of-type(even) th {
+    background-color: #1a031b;
+ }
+=======
 th,td{
     width: 25px;
     border-left: 1px solid black;
@@ -15,3 +37,4 @@ td {
 .weekEnd{
     background-color: #FF33A4;
 }
+>>>>>>> 90c908ecc09fc58d274be188e1642cad4d17a8dd
